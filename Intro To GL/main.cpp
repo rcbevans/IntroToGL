@@ -37,10 +37,14 @@ int main()
 	glUseProgram(shaderProgram);
 
 	GLint posAttrib = glGetAttribLocation(shaderProgram, "position");
-	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(posAttrib);
+	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE,
+		5 * sizeof(float), 0);
 
-	GLint uniColor = glGetUniformLocation(shaderProgram, "triangleColor");
-	glUniform3f(uniColor, 1.0f, 0.0f, 0.0f);
+	GLint colAttrib = glGetAttribLocation(shaderProgram, "color");
+	glEnableVertexAttribArray(colAttrib);
+	glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE,
+		5 * sizeof(float), (void*)(2 * sizeof(float)));
 
 	glEnableVertexAttribArray(posAttrib);
 
@@ -51,9 +55,6 @@ int main()
 
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
-
-		float time = (float)clock() / (float)CLOCKS_PER_SEC;
-		glUniform3f(uniColor, (sin(time * 4.0f) + 1.0f) / 2.0f, 0.0f, 0.0f);
 
 		// Draw a triangle from the 3 vertices
 		glDrawArrays(GL_TRIANGLES, 0, 3);
