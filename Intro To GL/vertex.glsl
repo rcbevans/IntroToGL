@@ -1,12 +1,12 @@
 #version 440
 
 in vec2 position;
-in vec3 color;
+in float value;
 
-out vec3 Color;
+out float shade;
 
 void main()
 {
-    Color = color;
+    shade = value;
     gl_Position = vec4(position.x, -position.y, 0.0, 1.0);
 }

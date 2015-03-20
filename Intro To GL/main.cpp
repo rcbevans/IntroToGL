@@ -42,12 +42,12 @@ int main()
 	GLint posAttrib = glGetAttribLocation(shaderProgram, "position");
 	glEnableVertexAttribArray(posAttrib);
 	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE,
-		5 * sizeof(float), 0);
+		3 * sizeof(float), 0);
 
-	GLint colAttrib = glGetAttribLocation(shaderProgram, "color");
+	GLint colAttrib = glGetAttribLocation(shaderProgram, "value");
 	glEnableVertexAttribArray(colAttrib);
-	glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE,
-		5 * sizeof(float), (void*)(2 * sizeof(float)));
+	glVertexAttribPointer(colAttrib, 1, GL_FLOAT, GL_FALSE,
+		3 * sizeof(float), (void*)(2 * sizeof(float)));
 
 	glEnableVertexAttribArray(posAttrib);
 
